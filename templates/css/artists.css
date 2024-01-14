@@ -1,0 +1,141 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('../img/background.png');
+    font-family: 'RobotoCondensed-Regular', sans-serif;
+    cursor: url('../img/cursor.png'), auto;
+}
+
+@font-face {
+    font-family: "RobotoCondensed-Regular";
+    src: url("../fonts/RobotoCondensed-Regular.ttf") format("truetype");
+}
+
+::-moz-selection {
+    color: #FC7F03;
+    background: #FFD014;
+}
+
+::selection {
+    color: #FC7F03;
+    background: #FFD014;
+}
+
+#headersection {
+    text-align: center;
+}
+
+#headersection h1 {
+    padding: 10px;
+    font-size: 50px;
+    color: #F2C894;
+    font-family: 'RobotoCondensed-Regular', sans-serif;
+}
+
+nav {
+    vertical-align: middle;
+    text-align: center;
+    background-color: #f2e2c4;
+}
+
+.artist {
+    flex-direction: column;
+    margin: 0 auto;
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.image-cont {
+    border: 2px solid #f2e2c4;
+    padding: 10px;
+}
+
+.image-cont img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.text-cont {
+    border: 2px solid #f2e2c4;
+    padding: 10px;
+    text-align: left;
+}
+
+.artist p {
+    text-align: left;
+    color: #f2e2c4;
+    font-family: 'RobotoCondensed-Regular', sans-serif;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f2e2c4;
+    font-family: 'RobotoCondensed-Regular', sans-serif;
+    font-weight: bold;
+    color: #59551B;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.home-btn:hover {
+    background-color: #F2C894;
+    color: #FC7F03;
+}
+
+form {
+    text-align: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+footer {
+    width: 100%;
+    background-color: #F2E2C4;
+    color: #A6785D;
+    text-align: center;
+    font-family: 'RobotoCondensed-Regular', sans-serif;
+    font-size: 14px;
+    padding: 5px 0;
+    left: 0;
+    bottom: 0;
+}
+
+h2 {
+    color: #f2e2c4;
+}
+
+a {
+    color: #F2C894;
+    text-decoration: none;
+    
+}
+
+
+a:hover {
+    font-weight: bold;
+}
+
+#map {
+    box-sizing: border-box;
+    border: 2px solid #f2e2c4;
+    padding: 10px;
+    aspect-ratio: 16 / 9;
+    width: 200%;
+    height: 100%;
+}
+
+li {
+    color: #F2E2C4;
+}

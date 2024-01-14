@@ -1,0 +1,89 @@
+{{define "title"}}
+<title>Main Page</title>
+{{end}}
+{{define "css"}}
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+{{end}}
+{{define "filter"}}
+<div class="headrow">
+    <input class="checkbox-trigger" type="checkbox" title="Filter"/>
+    <div class="menu-content">
+        <form action="/filter" method="post">
+            <div class="column">
+                <label for="CREA_DATE"><b>Creation Date:</b></label><br>
+                <label>Start:</label><br>
+                <input id="year-start" name="yearstart" type="number" min="{{.FirstYear}}" max="{{.LastYear}}"><br>
+                <label>End:</label><br>
+                <input id="year-end" name="yearend" type="number" min="{{.FirstYear}}" max="{{.LastYear}}">
+            </div>
+            <div class="column">
+                <label for="FIRST_ALBUM"><b>First Album Date:</b></label><br>
+                <label>From:</label><output id="value1"></output><br>
+                <input class="year-selector" name="1stAlbumStart" id="year-selector-start" type="range" min="{{.StartAlbumYear}}" max="{{.EndAlbumYear}}" value="1963"><br>
+                <label>To:</label><output id="value2"></output><br>
+                <input class="year-selector" name="1stAlbumEnd" id="year-selector-end" type="range" min="{{.StartAlbumYear}}" max="{{.EndAlbumYear}}" value="2018">
+            </div>
+            <div class="column">
+                <label for="Members"><b>No. of Members:</b></label><br>
+                {{range $i := .UniMemberData}}
+                <div class="chkbox"><input type="checkbox" class="my-checkbox" name="{{.}}" value="{{.}}"><label for="{{.}}">{{.}}</label></div>
+                {{end}}
+            </div>
+            <div class="column">
+                <label for="LOCATIONS"><b>Location:</b></label><br>
+                <select id="countries" name="countries" class="locationInput">
+                    <option value="">Select Country</option>
+                    {{range .UniLocationData}}
+                    <option value="{{.}}">{{.}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="column" style="text-align: center;">
+                <button type="submit" class="home-btn">Filter</button>
+            </div>
+        </form>
+    </div>
+    <span class="hamburger-menu"></span>
+</div>
+{{end}}
+{{define "searchbar"}}
+<div>
+    <form action="/search" method="post">
+        <input type="search" name="search" id="myInput" class="searchInput" list="myDatalist" autocomplete="off" placeholder="Type here" title="Search">
+        <datalist id="myDatalist">
+            {{range $i := .SearchData}}
+            <option>{{.}}</option>
+            {{end}}
+        </datalist>
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+</div>
+{{end}}
+{{define "body"}}
+<div class="alart">
+    <p>{{.AlartFilter}}</p>
+    <p>{{.AlartSearch}}</p>
+</div>
+<div id="maincontainer">
+    <form method="get" class="artistform">
+        {{range $i, $artist := .ArtistData}}
+            <div class="artist">
+                <a href="/artist?id={{$artist.ID}}">
+                    <div class="image-container" id="contain">
+                        <div class="img" id="img">
+                            <img src="{{$artist.IMAGE}}" alt="{{$artist.NAME}}" title="{{$artist.NAME}}">
+                        </div>
+                        <div class="artist-text" id="txt">
+                            <br>
+                            <h3>{{$artist.NAME}}</h3>
+                            <br>
+                            <p>Date created: {{$artist.CREA_DATE}}</p>
+                            <p>1<sup>st</sup> Album Released: {{$artist.FIRST_ALBUM}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {{end}}
+    </form>
+</div>
+{{end}}

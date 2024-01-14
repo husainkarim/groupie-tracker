@@ -1,0 +1,50 @@
+{{define "title"}}
+<title>Artist: {{.NAME}}</title>
+{{end}}
+{{define "css"}}
+<link rel="stylesheet" type="text/css" href="css/artists.css">
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+{{end}}
+{{define "searchbar"}}
+{{end}}
+{{define "filter"}}
+{{end}}
+{{define "body"}}
+<br>
+<form method="get">
+    <h2>{{.NAME}}</h2>
+    <div class="artist">
+        <div class="image-cont">
+            <img src="{{.IMAGE}}" alt="{{.NAME}}">
+        </div>
+        <div class="text-cont">
+            <p><b>Name:</b> {{.NAME}}</p>
+            <p><b>Members:</b> {{range .MEMBERS}}{{.}}, {{end}}</p>
+            <p><b>Date created:</b> {{.CREA_DATE}}</p>
+            <p><b>First Album Released:</b> {{.FIRST_ALBUM}}</p>
+            <p><b>Locations:</b></p>
+            {{range $i, $v := .RELATION}}
+            <p>* {{$i}}:</p>{{range $m := $v}}<li>{{.}}</li>{{end}}
+            {{end}}
+            {{range .LOCATIONS}}
+            <p class="cities" hidden>{{.}}</p>
+            {{end}}
+        </div>
+        <div id="map"></div>
+    </div>
+    <br>
+    <a class="home-btn" href="/">Home</a>
+    <br>
+</form>
+<div><br></div>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script>
+    const zoom = () => {
+        document.body.style.zoom = "80%" 
+    }
+</script>
+{{end}}

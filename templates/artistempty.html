@@ -1,0 +1,27 @@
+{{define "title"}}
+<title>Artist</title>
+{{end}}
+{{define "css"}}
+<link rel="stylesheet" type="text/css" href="css/artistsempty.css">
+{{end}}
+{{define "searchbar"}}
+{{end}}
+{{define "filter"}}
+{{end}}
+{{define "body"}}
+<div class="title">
+    <h2>Artists List</h2>
+</div>
+<div class="main">
+    
+    <form method="get">
+        <div>
+            <ul>
+                {{range $i, $artist := .ArtistData}}
+                <li><a href="/artist?id={{$artist.ID}}">{{$artist.NAME}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+    </form>
+</div>
+{{end}}
